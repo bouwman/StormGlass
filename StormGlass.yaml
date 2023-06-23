@@ -1,0 +1,239 @@
+openapi: 3.0.0
+info:
+  title: Storm Glass API
+  version: 2.0.0
+servers:
+  - url: https://api.stormglass.io/v2
+paths:
+  /weather/point:
+    get:
+      summary: Get weather data for a specific point
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          schema:
+            type: number
+            format: number
+        - name: lng
+          in: query
+          required: true
+          schema:
+            type: number
+            format: number
+        - name: params
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: start
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: end
+          in: query
+          required: false
+          schema:
+            type: integer
+        - name: source
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    type: object
+                    properties:
+                      latitude:
+                        type: number
+                        format: number
+                      longitude:
+                        type: number
+                        format: number
+                      dailyQuota:
+                        type: integer
+                      requestsMade:
+                        type: integer
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        time:
+                          type: string
+                        airTemperature:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        airTemperature80m:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        airTemperature100m:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        airTemperature1000hpa:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        airTemperature800hpa:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        airTemperature500hpa:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        airTemperature200hpa:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        pressure:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        cloudCover:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        currentDirection:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        currentSpeed:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        gust:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        humidity:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        iceCover:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        precipitation:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        snowDepth:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        seaLevel:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        swellDirection:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        swellHeight:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        swellPeriod:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        secondarySwellPeriod:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        secondarySwellDirection:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        secondarySwellHeight:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        visibility:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        waterTemperature:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        waveDirection:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        waveHeight:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        wavePeriod:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        windWaveDirection:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        windWaveHeight:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        windDirection1000hpa:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        windDirection800hpa:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        windDirection500hpa:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        windDirection200hpa:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        windSpeed:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        windSpeed20m:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        windSpeed30m:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        windSpeed40m:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        windSpeed50m:
+                          type: object
+                          additionalProperties:
+                            type: string
+                        windSpeed80m:
+                          type: object
+                          additionalProperties:
+                            type: string
+      security:
+        - ApiKeyAuth: []
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
