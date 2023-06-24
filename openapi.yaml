@@ -49,62 +49,39 @@ paths:
               schema:
                 type: object
                 properties:
-                  meta:
-                    type: object
-                    properties:
-                      latitude:
-                        type: number
-                        format: number
-                      longitude:
-                        type: number
-                        format: number
-                      dailyQuota:
-                        type: integer
-                      requestsMade:
-                        type: integer
-                  data:
+                  hours:
                     type: array
                     items:
                       type: object
                       properties:
-                        time:
-                          type: string
                         airTemperature:
                           type: object
                           additionalProperties:
-                            type: string
-                        airTemperature80m:
-                          type: object
-                          additionalProperties:
-                            type: string
-                        airTemperature100m:
-                          type: object
-                          additionalProperties:
-                            type: string
+                            type: number
                         airTemperature1000hpa:
                           type: object
                           additionalProperties:
-                            type: string
-                        airTemperature800hpa:
+                            type: number
+                        airTemperature100m:
                           type: object
                           additionalProperties:
-                            type: string
-                        airTemperature500hpa:
-                          type: object
-                          additionalProperties:
-                            type: string
+                            type: number
                         airTemperature200hpa:
                           type: object
                           additionalProperties:
-                            type: string
-                        pressure:
+                            type: number
+                        airTemperature500hpa:
+                          type: object
+                          additionalProperties:
+                            type: number
+                        airTemperature80m:
                           type: object
                           additionalProperties:
                             type: number
                         cloudCover:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         currentDirection:
                           type: object
                           additionalProperties:
@@ -120,20 +97,36 @@ paths:
                         humidity:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         iceCover:
                           type: object
                           additionalProperties:
-                            type: string
-                        precipitation:
+                            type: number
+                        pressure:
                           type: object
                           additionalProperties:
-                            type: string
-                        snowDepth:
+                            type: number
+                        precipitation:
                           type: object
                           additionalProperties:
                             type: number
                         seaLevel:
+                          type: object
+                          additionalProperties:
+                            type: number
+                        secondarySwellDirection:
+                          type: object
+                          additionalProperties:
+                            type: number
+                        secondarySwellHeight:
+                          type: object
+                          additionalProperties:
+                            type: number
+                        secondarySwellPeriod:
+                          type: object
+                          additionalProperties:
+                            type: number
+                        snowDepth:
                           type: object
                           additionalProperties:
                             type: number
@@ -149,26 +142,16 @@ paths:
                           type: object
                           additionalProperties:
                             type: number
-                        secondarySwellPeriod:
-                          type: object
-                          additionalProperties:
-                            type: number
-                        secondarySwellDirection:
-                          type: object
-                          additionalProperties:
-                            type: number
-                        secondarySwellHeight:
-                          type: object
-                          additionalProperties:
-                            type: number
+                        time:
+                          type: string
                         visibility:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         waterTemperature:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         waveDirection:
                           type: object
                           additionalProperties:
@@ -181,19 +164,11 @@ paths:
                           type: object
                           additionalProperties:
                             type: number
-                        windWaveDirection:
-                          type: object
-                          additionalProperties:
-                            type: number
-                        windWaveHeight:
-                          type: object
-                          additionalProperties:
-                            type: number
                         windDirection1000hpa:
                           type: object
                           additionalProperties:
                             type: number
-                        windDirection800hpa:
+                        windDirection200hpa:
                           type: object
                           additionalProperties:
                             type: number
@@ -201,7 +176,7 @@ paths:
                           type: object
                           additionalProperties:
                             type: number
-                        windDirection200hpa:
+                        windDirection800hpa:
                           type: object
                           additionalProperties:
                             type: number
@@ -229,6 +204,37 @@ paths:
                           type: object
                           additionalProperties:
                             type: number
+                  meta:
+                    type: object
+                    properties:
+                      cost:
+                        type: integer
+                        example: 1
+                      dailyQuota:
+                        type: integer
+                        example: 10
+                      end:
+                        type: string
+                        example: "2023-07-04T00:00:00Z"
+                      lat:
+                        type: number
+                        format: float
+                        example: 58.7984
+                      lng:
+                        type: number
+                        format: float
+                        example: 17.8081
+                      params:
+                        type: array
+                        items:
+                          type: string
+                          example: airTemperature
+                      requestCount:
+                        type: integer
+                        example: 8
+                      start:
+                        type: string
+                        example: "2023-06-24T00:00:00Z"
       security:
         - ApiKeyAuth: []
 components:
