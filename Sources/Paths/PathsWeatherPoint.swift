@@ -20,110 +20,82 @@ extension Paths {
         }
 
         public struct GetResponse: Decodable {
+            public var hours: [Hour]?
             public var meta: Meta?
-            public var data: [Datum]?
 
-            public struct Meta: Decodable {
-                public var latitude: Double?
-                public var longitude: Double?
-                public var dailyQuota: Int?
-                public var requestsMade: Int?
-
-                public init(latitude: Double? = nil, longitude: Double? = nil, dailyQuota: Int? = nil, requestsMade: Int? = nil) {
-                    self.latitude = latitude
-                    self.longitude = longitude
-                    self.dailyQuota = dailyQuota
-                    self.requestsMade = requestsMade
-                }
-
-                public init(from decoder: Decoder) throws {
-                    let values = try decoder.container(keyedBy: StringCodingKey.self)
-                    self.latitude = try values.decodeIfPresent(Double.self, forKey: "latitude")
-                    self.longitude = try values.decodeIfPresent(Double.self, forKey: "longitude")
-                    self.dailyQuota = try values.decodeIfPresent(Int.self, forKey: "dailyQuota")
-                    self.requestsMade = try values.decodeIfPresent(Int.self, forKey: "requestsMade")
-                }
-            }
-
-            public struct Datum: Decodable {
+            public struct Hour: Decodable {
+                public var airTemperature: [String: Double]?
+                public var airTemperature1000hpa: [String: Double]?
+                public var airTemperature100m: [String: Double]?
+                public var airTemperature200hpa: [String: Double]?
+                public var airTemperature500hpa: [String: Double]?
+                public var airTemperature80m: [String: Double]?
+                public var cloudCover: [String: Double]?
+                public var currentDirection: [String: Double]?
+                public var currentSpeed: [String: Double]?
+                public var gust: [String: Double]?
+                public var humidity: [String: Double]?
+                public var iceCover: [String: Double]?
+                public var pressure: [String: Double]?
+                public var precipitation: [String: Double]?
+                public var seaLevel: [String: Double]?
+                public var secondarySwellDirection: [String: Double]?
+                public var secondarySwellHeight: [String: Double]?
+                public var secondarySwellPeriod: [String: Double]?
+                public var snowDepth: [String: Double]?
+                public var swellDirection: [String: Double]?
+                public var swellHeight: [String: Double]?
+                public var swellPeriod: [String: Double]?
                 public var time: String?
-                public var airTemperature: [String: String]?
-                public var airTemperature80m: [String: String]?
-                public var airTemperature100m: [String: String]?
-                public var airTemperature1000hpa: [String: String]?
-                public var airTemperature800hpa: [String: String]?
-                public var airTemperature500hpa: [String: String]?
-                public var airTemperature200hpa: [String: String]?
-                public var pressure: [String: String]?
-                public var cloudCover: [String: String]?
-                public var currentDirection: [String: String]?
-                public var currentSpeed: [String: String]?
-                public var gust: [String: String]?
-                public var humidity: [String: String]?
-                public var iceCover: [String: String]?
-                public var precipitation: [String: String]?
-                public var snowDepth: [String: String]?
-                public var seaLevel: [String: String]?
-                public var swellDirection: [String: String]?
-                public var swellHeight: [String: String]?
-                public var swellPeriod: [String: String]?
-                public var secondarySwellPeriod: [String: String]?
-                public var secondarySwellDirection: [String: String]?
-                public var secondarySwellHeight: [String: String]?
-                public var visibility: [String: String]?
-                public var waterTemperature: [String: String]?
-                public var waveDirection: [String: String]?
-                public var waveHeight: [String: String]?
-                public var wavePeriod: [String: String]?
-                public var windWaveDirection: [String: String]?
-                public var windWaveHeight: [String: String]?
-                public var windDirection1000hpa: [String: String]?
-                public var windDirection800hpa: [String: String]?
-                public var windDirection500hpa: [String: String]?
-                public var windDirection200hpa: [String: String]?
-                public var windSpeed: [String: String]?
-                public var windSpeed20m: [String: String]?
-                public var windSpeed30m: [String: String]?
-                public var windSpeed40m: [String: String]?
-                public var windSpeed50m: [String: String]?
-                public var windSpeed80m: [String: String]?
+                public var visibility: [String: Double]?
+                public var waterTemperature: [String: Double]?
+                public var waveDirection: [String: Double]?
+                public var waveHeight: [String: Double]?
+                public var wavePeriod: [String: Double]?
+                public var windDirection1000hpa: [String: Double]?
+                public var windDirection200hpa: [String: Double]?
+                public var windDirection500hpa: [String: Double]?
+                public var windDirection800hpa: [String: Double]?
+                public var windSpeed: [String: Double]?
+                public var windSpeed20m: [String: Double]?
+                public var windSpeed30m: [String: Double]?
+                public var windSpeed40m: [String: Double]?
+                public var windSpeed50m: [String: Double]?
+                public var windSpeed80m: [String: Double]?
 
-                public init(time: String? = nil, airTemperature: [String: String]? = nil, airTemperature80m: [String: String]? = nil, airTemperature100m: [String: String]? = nil, airTemperature1000hpa: [String: String]? = nil, airTemperature800hpa: [String: String]? = nil, airTemperature500hpa: [String: String]? = nil, airTemperature200hpa: [String: String]? = nil, pressure: [String: String]? = nil, cloudCover: [String: String]? = nil, currentDirection: [String: String]? = nil, currentSpeed: [String: String]? = nil, gust: [String: String]? = nil, humidity: [String: String]? = nil, iceCover: [String: String]? = nil, precipitation: [String: String]? = nil, snowDepth: [String: String]? = nil, seaLevel: [String: String]? = nil, swellDirection: [String: String]? = nil, swellHeight: [String: String]? = nil, swellPeriod: [String: String]? = nil, secondarySwellPeriod: [String: String]? = nil, secondarySwellDirection: [String: String]? = nil, secondarySwellHeight: [String: String]? = nil, visibility: [String: String]? = nil, waterTemperature: [String: String]? = nil, waveDirection: [String: String]? = nil, waveHeight: [String: String]? = nil, wavePeriod: [String: String]? = nil, windWaveDirection: [String: String]? = nil, windWaveHeight: [String: String]? = nil, windDirection1000hpa: [String: String]? = nil, windDirection800hpa: [String: String]? = nil, windDirection500hpa: [String: String]? = nil, windDirection200hpa: [String: String]? = nil, windSpeed: [String: String]? = nil, windSpeed20m: [String: String]? = nil, windSpeed30m: [String: String]? = nil, windSpeed40m: [String: String]? = nil, windSpeed50m: [String: String]? = nil, windSpeed80m: [String: String]? = nil) {
-                    self.time = time
+                public init(airTemperature: [String: Double]? = nil, airTemperature1000hpa: [String: Double]? = nil, airTemperature100m: [String: Double]? = nil, airTemperature200hpa: [String: Double]? = nil, airTemperature500hpa: [String: Double]? = nil, airTemperature80m: [String: Double]? = nil, cloudCover: [String: Double]? = nil, currentDirection: [String: Double]? = nil, currentSpeed: [String: Double]? = nil, gust: [String: Double]? = nil, humidity: [String: Double]? = nil, iceCover: [String: Double]? = nil, pressure: [String: Double]? = nil, precipitation: [String: Double]? = nil, seaLevel: [String: Double]? = nil, secondarySwellDirection: [String: Double]? = nil, secondarySwellHeight: [String: Double]? = nil, secondarySwellPeriod: [String: Double]? = nil, snowDepth: [String: Double]? = nil, swellDirection: [String: Double]? = nil, swellHeight: [String: Double]? = nil, swellPeriod: [String: Double]? = nil, time: String? = nil, visibility: [String: Double]? = nil, waterTemperature: [String: Double]? = nil, waveDirection: [String: Double]? = nil, waveHeight: [String: Double]? = nil, wavePeriod: [String: Double]? = nil, windDirection1000hpa: [String: Double]? = nil, windDirection200hpa: [String: Double]? = nil, windDirection500hpa: [String: Double]? = nil, windDirection800hpa: [String: Double]? = nil, windSpeed: [String: Double]? = nil, windSpeed20m: [String: Double]? = nil, windSpeed30m: [String: Double]? = nil, windSpeed40m: [String: Double]? = nil, windSpeed50m: [String: Double]? = nil, windSpeed80m: [String: Double]? = nil) {
                     self.airTemperature = airTemperature
-                    self.airTemperature80m = airTemperature80m
-                    self.airTemperature100m = airTemperature100m
                     self.airTemperature1000hpa = airTemperature1000hpa
-                    self.airTemperature800hpa = airTemperature800hpa
-                    self.airTemperature500hpa = airTemperature500hpa
+                    self.airTemperature100m = airTemperature100m
                     self.airTemperature200hpa = airTemperature200hpa
-                    self.pressure = pressure
+                    self.airTemperature500hpa = airTemperature500hpa
+                    self.airTemperature80m = airTemperature80m
                     self.cloudCover = cloudCover
                     self.currentDirection = currentDirection
                     self.currentSpeed = currentSpeed
                     self.gust = gust
                     self.humidity = humidity
                     self.iceCover = iceCover
+                    self.pressure = pressure
                     self.precipitation = precipitation
-                    self.snowDepth = snowDepth
                     self.seaLevel = seaLevel
+                    self.secondarySwellDirection = secondarySwellDirection
+                    self.secondarySwellHeight = secondarySwellHeight
+                    self.secondarySwellPeriod = secondarySwellPeriod
+                    self.snowDepth = snowDepth
                     self.swellDirection = swellDirection
                     self.swellHeight = swellHeight
                     self.swellPeriod = swellPeriod
-                    self.secondarySwellPeriod = secondarySwellPeriod
-                    self.secondarySwellDirection = secondarySwellDirection
-                    self.secondarySwellHeight = secondarySwellHeight
+                    self.time = time
                     self.visibility = visibility
                     self.waterTemperature = waterTemperature
                     self.waveDirection = waveDirection
                     self.waveHeight = waveHeight
                     self.wavePeriod = wavePeriod
-                    self.windWaveDirection = windWaveDirection
-                    self.windWaveHeight = windWaveHeight
                     self.windDirection1000hpa = windDirection1000hpa
-                    self.windDirection800hpa = windDirection800hpa
-                    self.windDirection500hpa = windDirection500hpa
                     self.windDirection200hpa = windDirection200hpa
+                    self.windDirection500hpa = windDirection500hpa
+                    self.windDirection800hpa = windDirection800hpa
                     self.windSpeed = windSpeed
                     self.windSpeed20m = windSpeed20m
                     self.windSpeed30m = windSpeed30m
@@ -134,59 +106,95 @@ extension Paths {
 
                 public init(from decoder: Decoder) throws {
                     let values = try decoder.container(keyedBy: StringCodingKey.self)
+                    self.airTemperature = try values.decodeIfPresent([String: Double].self, forKey: "airTemperature")
+                    self.airTemperature1000hpa = try values.decodeIfPresent([String: Double].self, forKey: "airTemperature1000hpa")
+                    self.airTemperature100m = try values.decodeIfPresent([String: Double].self, forKey: "airTemperature100m")
+                    self.airTemperature200hpa = try values.decodeIfPresent([String: Double].self, forKey: "airTemperature200hpa")
+                    self.airTemperature500hpa = try values.decodeIfPresent([String: Double].self, forKey: "airTemperature500hpa")
+                    self.airTemperature80m = try values.decodeIfPresent([String: Double].self, forKey: "airTemperature80m")
+                    self.cloudCover = try values.decodeIfPresent([String: Double].self, forKey: "cloudCover")
+                    self.currentDirection = try values.decodeIfPresent([String: Double].self, forKey: "currentDirection")
+                    self.currentSpeed = try values.decodeIfPresent([String: Double].self, forKey: "currentSpeed")
+                    self.gust = try values.decodeIfPresent([String: Double].self, forKey: "gust")
+                    self.humidity = try values.decodeIfPresent([String: Double].self, forKey: "humidity")
+                    self.iceCover = try values.decodeIfPresent([String: Double].self, forKey: "iceCover")
+                    self.pressure = try values.decodeIfPresent([String: Double].self, forKey: "pressure")
+                    self.precipitation = try values.decodeIfPresent([String: Double].self, forKey: "precipitation")
+                    self.seaLevel = try values.decodeIfPresent([String: Double].self, forKey: "seaLevel")
+                    self.secondarySwellDirection = try values.decodeIfPresent([String: Double].self, forKey: "secondarySwellDirection")
+                    self.secondarySwellHeight = try values.decodeIfPresent([String: Double].self, forKey: "secondarySwellHeight")
+                    self.secondarySwellPeriod = try values.decodeIfPresent([String: Double].self, forKey: "secondarySwellPeriod")
+                    self.snowDepth = try values.decodeIfPresent([String: Double].self, forKey: "snowDepth")
+                    self.swellDirection = try values.decodeIfPresent([String: Double].self, forKey: "swellDirection")
+                    self.swellHeight = try values.decodeIfPresent([String: Double].self, forKey: "swellHeight")
+                    self.swellPeriod = try values.decodeIfPresent([String: Double].self, forKey: "swellPeriod")
                     self.time = try values.decodeIfPresent(String.self, forKey: "time")
-                    self.airTemperature = try values.decodeIfPresent([String: String].self, forKey: "airTemperature")
-                    self.airTemperature80m = try values.decodeIfPresent([String: String].self, forKey: "airTemperature80m")
-                    self.airTemperature100m = try values.decodeIfPresent([String: String].self, forKey: "airTemperature100m")
-                    self.airTemperature1000hpa = try values.decodeIfPresent([String: String].self, forKey: "airTemperature1000hpa")
-                    self.airTemperature800hpa = try values.decodeIfPresent([String: String].self, forKey: "airTemperature800hpa")
-                    self.airTemperature500hpa = try values.decodeIfPresent([String: String].self, forKey: "airTemperature500hpa")
-                    self.airTemperature200hpa = try values.decodeIfPresent([String: String].self, forKey: "airTemperature200hpa")
-                    self.pressure = try values.decodeIfPresent([String: String].self, forKey: "pressure")
-                    self.cloudCover = try values.decodeIfPresent([String: String].self, forKey: "cloudCover")
-                    self.currentDirection = try values.decodeIfPresent([String: String].self, forKey: "currentDirection")
-                    self.currentSpeed = try values.decodeIfPresent([String: String].self, forKey: "currentSpeed")
-                    self.gust = try values.decodeIfPresent([String: String].self, forKey: "gust")
-                    self.humidity = try values.decodeIfPresent([String: String].self, forKey: "humidity")
-                    self.iceCover = try values.decodeIfPresent([String: String].self, forKey: "iceCover")
-                    self.precipitation = try values.decodeIfPresent([String: String].self, forKey: "precipitation")
-                    self.snowDepth = try values.decodeIfPresent([String: String].self, forKey: "snowDepth")
-                    self.seaLevel = try values.decodeIfPresent([String: String].self, forKey: "seaLevel")
-                    self.swellDirection = try values.decodeIfPresent([String: String].self, forKey: "swellDirection")
-                    self.swellHeight = try values.decodeIfPresent([String: String].self, forKey: "swellHeight")
-                    self.swellPeriod = try values.decodeIfPresent([String: String].self, forKey: "swellPeriod")
-                    self.secondarySwellPeriod = try values.decodeIfPresent([String: String].self, forKey: "secondarySwellPeriod")
-                    self.secondarySwellDirection = try values.decodeIfPresent([String: String].self, forKey: "secondarySwellDirection")
-                    self.secondarySwellHeight = try values.decodeIfPresent([String: String].self, forKey: "secondarySwellHeight")
-                    self.visibility = try values.decodeIfPresent([String: String].self, forKey: "visibility")
-                    self.waterTemperature = try values.decodeIfPresent([String: String].self, forKey: "waterTemperature")
-                    self.waveDirection = try values.decodeIfPresent([String: String].self, forKey: "waveDirection")
-                    self.waveHeight = try values.decodeIfPresent([String: String].self, forKey: "waveHeight")
-                    self.wavePeriod = try values.decodeIfPresent([String: String].self, forKey: "wavePeriod")
-                    self.windWaveDirection = try values.decodeIfPresent([String: String].self, forKey: "windWaveDirection")
-                    self.windWaveHeight = try values.decodeIfPresent([String: String].self, forKey: "windWaveHeight")
-                    self.windDirection1000hpa = try values.decodeIfPresent([String: String].self, forKey: "windDirection1000hpa")
-                    self.windDirection800hpa = try values.decodeIfPresent([String: String].self, forKey: "windDirection800hpa")
-                    self.windDirection500hpa = try values.decodeIfPresent([String: String].self, forKey: "windDirection500hpa")
-                    self.windDirection200hpa = try values.decodeIfPresent([String: String].self, forKey: "windDirection200hpa")
-                    self.windSpeed = try values.decodeIfPresent([String: String].self, forKey: "windSpeed")
-                    self.windSpeed20m = try values.decodeIfPresent([String: String].self, forKey: "windSpeed20m")
-                    self.windSpeed30m = try values.decodeIfPresent([String: String].self, forKey: "windSpeed30m")
-                    self.windSpeed40m = try values.decodeIfPresent([String: String].self, forKey: "windSpeed40m")
-                    self.windSpeed50m = try values.decodeIfPresent([String: String].self, forKey: "windSpeed50m")
-                    self.windSpeed80m = try values.decodeIfPresent([String: String].self, forKey: "windSpeed80m")
+                    self.visibility = try values.decodeIfPresent([String: Double].self, forKey: "visibility")
+                    self.waterTemperature = try values.decodeIfPresent([String: Double].self, forKey: "waterTemperature")
+                    self.waveDirection = try values.decodeIfPresent([String: Double].self, forKey: "waveDirection")
+                    self.waveHeight = try values.decodeIfPresent([String: Double].self, forKey: "waveHeight")
+                    self.wavePeriod = try values.decodeIfPresent([String: Double].self, forKey: "wavePeriod")
+                    self.windDirection1000hpa = try values.decodeIfPresent([String: Double].self, forKey: "windDirection1000hpa")
+                    self.windDirection200hpa = try values.decodeIfPresent([String: Double].self, forKey: "windDirection200hpa")
+                    self.windDirection500hpa = try values.decodeIfPresent([String: Double].self, forKey: "windDirection500hpa")
+                    self.windDirection800hpa = try values.decodeIfPresent([String: Double].self, forKey: "windDirection800hpa")
+                    self.windSpeed = try values.decodeIfPresent([String: Double].self, forKey: "windSpeed")
+                    self.windSpeed20m = try values.decodeIfPresent([String: Double].self, forKey: "windSpeed20m")
+                    self.windSpeed30m = try values.decodeIfPresent([String: Double].self, forKey: "windSpeed30m")
+                    self.windSpeed40m = try values.decodeIfPresent([String: Double].self, forKey: "windSpeed40m")
+                    self.windSpeed50m = try values.decodeIfPresent([String: Double].self, forKey: "windSpeed50m")
+                    self.windSpeed80m = try values.decodeIfPresent([String: Double].self, forKey: "windSpeed80m")
                 }
             }
 
-            public init(meta: Meta? = nil, data: [Datum]? = nil) {
+            public struct Meta: Decodable {
+                public var cost: Int?
+                /// Example: 10
+                public var dailyQuota: Int?
+                /// Example: "2023-07-04T00:00:00Z"
+                public var end: String?
+                /// Example: 58.7984
+                public var lat: Float?
+                /// Example: 17.8081
+                public var lng: Float?
+                public var params: [String]?
+                public var requestCount: Int?
+                /// Example: "2023-06-24T00:00:00Z"
+                public var start: String?
+
+                public init(cost: Int? = nil, dailyQuota: Int? = nil, end: String? = nil, lat: Float? = nil, lng: Float? = nil, params: [String]? = nil, requestCount: Int? = nil, start: String? = nil) {
+                    self.cost = cost
+                    self.dailyQuota = dailyQuota
+                    self.end = end
+                    self.lat = lat
+                    self.lng = lng
+                    self.params = params
+                    self.requestCount = requestCount
+                    self.start = start
+                }
+
+                public init(from decoder: Decoder) throws {
+                    let values = try decoder.container(keyedBy: StringCodingKey.self)
+                    self.cost = try values.decodeIfPresent(Int.self, forKey: "cost")
+                    self.dailyQuota = try values.decodeIfPresent(Int.self, forKey: "dailyQuota")
+                    self.end = try values.decodeIfPresent(String.self, forKey: "end")
+                    self.lat = try values.decodeIfPresent(Float.self, forKey: "lat")
+                    self.lng = try values.decodeIfPresent(Float.self, forKey: "lng")
+                    self.params = try values.decodeIfPresent([String].self, forKey: "params")
+                    self.requestCount = try values.decodeIfPresent(Int.self, forKey: "requestCount")
+                    self.start = try values.decodeIfPresent(String.self, forKey: "start")
+                }
+            }
+
+            public init(hours: [Hour]? = nil, meta: Meta? = nil) {
+                self.hours = hours
                 self.meta = meta
-                self.data = data
             }
 
             public init(from decoder: Decoder) throws {
                 let values = try decoder.container(keyedBy: StringCodingKey.self)
+                self.hours = try values.decodeIfPresent([Hour].self, forKey: "hours")
                 self.meta = try values.decodeIfPresent(Meta.self, forKey: "meta")
-                self.data = try values.decodeIfPresent([Datum].self, forKey: "data")
             }
         }
 

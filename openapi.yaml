@@ -100,7 +100,7 @@ paths:
                         pressure:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         cloudCover:
                           type: object
                           additionalProperties:
@@ -108,15 +108,15 @@ paths:
                         currentDirection:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         currentSpeed:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         gust:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         humidity:
                           type: object
                           additionalProperties:
@@ -132,35 +132,35 @@ paths:
                         snowDepth:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         seaLevel:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         swellDirection:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         swellHeight:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         swellPeriod:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         secondarySwellPeriod:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         secondarySwellDirection:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         secondarySwellHeight:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         visibility:
                           type: object
                           additionalProperties:
@@ -172,63 +172,63 @@ paths:
                         waveDirection:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         waveHeight:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         wavePeriod:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         windWaveDirection:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         windWaveHeight:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         windDirection1000hpa:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         windDirection800hpa:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         windDirection500hpa:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         windDirection200hpa:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         windSpeed:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         windSpeed20m:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         windSpeed30m:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         windSpeed40m:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         windSpeed50m:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
                         windSpeed80m:
                           type: object
                           additionalProperties:
-                            type: string
+                            type: number
       security:
         - ApiKeyAuth: []
 components:
